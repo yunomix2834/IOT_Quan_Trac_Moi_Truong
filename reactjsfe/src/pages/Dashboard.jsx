@@ -13,6 +13,16 @@ import {
   convertHumidity,
 } from "../utils/convertData";
 
+import {
+  convertTemperatureToLabel,
+  convertHumidityToLabel,
+  convertDustDensityToLabel,
+  convertMQ7ValueToLabel,
+  convertLightToLuxToLabel,
+  convertRainValueToLabel,
+} from "../utils/convertData";
+
+
 function Dashboard() {
   const [selectedLocation, setSelectedLocation] = useState("Nam Định");
 
@@ -122,61 +132,6 @@ function Dashboard() {
   }, []);
 
 
-  //chuyển đổi mức độ đo sang label
-  // Hàm chuyển đổi nhiệt độ
-  const convertTemperatureToLabel = (temperature) => {
-    if (temperature <= 0) return "Rất lạnh";
-    if (temperature <= 18) return "Lạnh";
-    if (temperature <= 26) return "Mát";
-    if (temperature <= 33) return "Nóng";
-    return "Rất nóng";
-  };
-
-  // Hàm chuyển đổi độ ẩm
-  const convertHumidityToLabel = (humidity) => {
-    if (humidity <= 30) return "Rất khô";
-    if (humidity <= 50) return "Khô";
-    if (humidity <= 70) return "Bình thường";
-    if (humidity <= 90) return "Ẩm ướt";
-    return "Rất ẩm ướt";
-  };
-
-  // Hàm chuyển đổi độ bụi
-  const convertDustDensityToLabel = (dustDensity) => {
-    if (dustDensity <= 50) return "Không khí sạch";
-    if (dustDensity <= 150) return "Không khí hơi ô nhiễm";
-    if (dustDensity <= 250) return "Không khí ô nhiễm";
-    if (dustDensity <= 350) return "Không khí rất ô nhiễm";
-    return "Không khí nguy hiểm";
-  };
-
-  // Hàm chuyển đổi giá trị CO (PPM)
-  const convertMQ7ValueToLabel = (mq7) => {
-    if (mq7 <= 50) return "Không khí trong lành";
-    if (mq7 <= 100) return "Chất lượng không khí tốt";
-    if (mq7 <= 200) return "Chất lượng không khí trung bình";
-    if (mq7 <= 300) return "Không khí không lành mạnh cho người nhạy cảm";
-    if (mq7 <= 500) return "Không khí không lành mạnh";
-    return "Không khí nguy hiểm";
-  };
-
-  // Hàm chuyển đổi ánh sáng (Lux)
-  const convertLightToLuxToLabel = (light) => {
-    if (light <= 700) return "Rất tối";
-    if (light <= 3000) return "Tối";
-    if (light <= 6000) return "Ánh sáng bình thường";
-    if (light <= 10000) return "Sáng";
-    return "Rất sáng";
-  };
-
-  // Hàm chuyển đổi cảm biến mưa
-  const convertRainValueToLabel = (rain) => {
-    if (rain <= 10) return "Không mưa";
-    if (rain <= 30) return "Xuất hiện hạt mưa nhỏ";
-    if (rain <= 50) return "Có vài hạt mưa nhỏ";
-    if (rain <= 70) return "Trời bắt đầu mưa";
-    return "Trời đang mưa to";
-  };
 
 
   return (
@@ -228,13 +183,13 @@ function Dashboard() {
               <SensorCard
                 title="CO Concentration"
                 value={sensorData.mq7}
-                unit="/1000 PPM"
+                unit="PPM"
                 svgPath="/src/assets/CO.jpg"
               />
               <SensorCard
                 title="Light"
                 value={sensorData.light}
-                unit="/10000 Lux"
+                unit="Lux"
                 svgPath="/src/assets/light.jpg"
               />
               <SensorCard
