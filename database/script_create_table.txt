@@ -1,0 +1,12 @@
+--Database ControllerArduino--
+
+CREATE TABLE SensorData (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Temperature NVARCHAR(50),
+    Humidity NVARCHAR(50),
+    DustDensity NVARCHAR(50),
+    MQ7 NVARCHAR(50),
+    Light NVARCHAR(50),
+    Rain NVARCHAR(50),
+    Timestamp DATETIME DEFAULT GETDATE()
+);

@@ -1,0 +1,3 @@
+C:\Users\yunom\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E rm -f CMakeFiles\ControlArduino.dir/objects.a
+C:\Users\yunom\AppData\Local\Programs\CLion\bin\mingw\bin\ar.exe qc CMakeFiles\ControlArduino.dir/objects.a @CMakeFiles\ControlArduino.dir\objects1.rsp
+C:\Users\yunom\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\ControlArduino.dir/objects.a -Wl,--no-whole-archive -o ControlArduino.exe -Wl,--out-implib,libControlArduino.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ControlArduino.dir\linkLibs.rsp
