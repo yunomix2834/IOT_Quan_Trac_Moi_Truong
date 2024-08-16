@@ -28,42 +28,53 @@ export const convertMQ7Value = (mq7Value) => {
   // MQ-7: giá trị thô (0-1024)
   const ppm = (mq7Value / 1024) * 100; // Giả sử 1024 tương ứng với 100 ppm CO
 
-  let aqi = 0;
+  let mq7 = 0;
 
   if (ppm <= 4.4) {
-    aqi = (50 / 4.4) * ppm;
+    mq7 = (50 / 4.4) * ppm;
   } else if (ppm <= 9.4) {
-    aqi = ((100 - 51) / (9.4 - 4.5)) * (ppm - 4.5) + 51;
+    mq7 = ((100 - 51) / (9.4 - 4.5)) * (ppm - 4.5) + 51;
   } else if (ppm <= 12.4) {
-    aqi = ((150 - 101) / (12.4 - 9.5)) * (ppm - 9.5) + 101;
+    mq7 = ((150 - 101) / (12.4 - 9.5)) * (ppm - 9.5) + 101;
   } else if (ppm <= 15.4) {
-    aqi = ((200 - 151) / (15.4 - 12.5)) * (ppm - 12.5) + 151;
+    mq7 = ((200 - 151) / (15.4 - 12.5)) * (ppm - 12.5) + 151;
   } else if (ppm <= 30.4) {
-    aqi = ((300 - 201) / (30.4 - 15.5)) * (ppm - 15.5) + 201;
+    mq7 = ((300 - 201) / (30.4 - 15.5)) * (ppm - 15.5) + 201;
   } else if (ppm <= 40.4) {
-    aqi = ((400 - 301) / (40.4 - 30.5)) * (ppm - 30.5) + 301;
+    mq7 = ((400 - 301) / (40.4 - 30.5)) * (ppm - 30.5) + 301;
   } else {
-    aqi = ((500 - 401) / (50.4 - 40.5)) * (ppm - 40.5) + 401;
+    mq7 = ((500 - 401) / (50.4 - 40.5)) * (ppm - 40.5) + 401;
   }
 
-  return Math.round(aqi);
+  return Math.round(mq7);
 };
 
 
-// Chuyển đổi giá trị từ cảm biến bụi thành mức độ bụi theo AQI
+// Chuyển đổi giá trị từ cảm biến bụi thành AQI
 export const convertDustDensity = (dustDensityValue) => {
-  // Cảm biến bụi GP2Y1010AU0F: digital trả ra trong khoảng 0 -> 1
-  const dustDensity = parseFloat(dustDensityValue) * 500; // Giả sử 1 tương ứng với 500 µg/m³
+  const pm25 = dustDensityValue * 500; // Giả sử 1024 tương ứng với 500 µg/m³
 
-  // Chuyển đổi giá trị bụi thành AQI cho PM2.5
-  if (dustDensity <= 12) return Math.round(dustDensity * 50 / 12);
-  if (dustDensity <= 35.4) return Math.round(50 + (dustDensity - 12) * 50 / 23.4);
-  if (dustDensity <= 55.4) return Math.round(100 + (dustDensity - 35.4) * 50 / 20);
-  if (dustDensity <= 150.4) return Math.round(150 + (dustDensity - 55.4) * 50 / 95);
-  if (dustDensity <= 250.4) return Math.round(200 + (dustDensity - 150.4) * 50 / 100);
-  if (dustDensity <= 350.4) return Math.round(300 + (dustDensity - 250.4) * 100 / 100);
-  return Math.round(400 + (dustDensity - 350.4) * 100 / 100);
+  let dustDensity = 0;
+
+  if (pm25 <= 12.0) {
+    dustDensity = (50 / 12.0) * pm25;
+  } else if (pm25 <= 35.4) {
+    dustDensity = ((100 - 51) / (35.4 - 12.1)) * (pm25 - 12.1) + 51;
+  } else if (pm25 <= 55.4) {
+    dustDensity = ((150 - 101) / (55.4 - 35.5)) * (pm25 - 35.5) + 101;
+  } else if (pm25 <= 150.4) {
+    dustDensity = ((200 - 151) / (150.4 - 55.5)) * (pm25 - 55.5) + 151;
+  } else if (pm25 <= 250.4) {
+    dustDensity = ((300 - 201) / (250.4 - 150.5)) * (pm25 - 150.5) + 201;
+  } else if (pm25 <= 350.4) {
+    dustDensity = ((400 - 301) / (350.4 - 250.5)) * (pm25 - 250.5) + 301;
+  } else {
+    dustDensity = ((500 - 401) / (500.4 - 350.5)) * (pm25 - 350.5) + 401;
+  }
+
+  return Math.round(dustDensity);
 };
+
 
 // Chuyển đổi giá trị nhiệt độ từ DHT11
 export const convertTemperature = (temperature) => {
@@ -105,13 +116,13 @@ export const convertDustDensityToLabel = (dustDensity) => {
 };
 
 // Hàm chuyển đổi giá trị CO theo AQI (PPM) thành nhãn
-export const convertMQ7ValueToLabel = (aqi) => {
-  if (aqi <= 50) return "Không khí trong lành";
-  if (aqi <= 100) return "Chất lượng không khí tốt";
-  if (aqi <= 150) return "Chất lượng không khí trung bình";
-  if (aqi <= 200) return "Không khí không lành mạnh cho người nhạy cảm";
-  if (aqi <= 300) return "Không khí không lành mạnh";
-  if (aqi <= 400) return "Không khí rất không lành mạnh";
+export const convertMQ7ValueToLabel = (mq7) => {
+  if (mq7 <= 50) return "Không khí trong lành";
+  if (mq7 <= 100) return "Chất lượng không khí tốt";
+  if (mq7 <= 150) return "Chất lượng không khí trung bình";
+  if (mq7 <= 200) return "Không khí không lành mạnh cho người nhạy cảm";
+  if (mq7 <= 300) return "Không khí không lành mạnh";
+  if (mq7 <= 400) return "Không khí rất không lành mạnh";
   return "Không khí nguy hiểm";
 };
 
