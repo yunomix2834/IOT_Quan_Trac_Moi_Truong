@@ -17,7 +17,7 @@ function Details() {
   ];
 
   const handleViewDetail = () => {
-    navigate("/detail/view");
+    navigate("/details/view");
   };
 
   return (

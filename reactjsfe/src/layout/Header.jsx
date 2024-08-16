@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../public/logo.png"; // Thay đổi đường dẫn tới logo của bạn
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "/logo.png"; // Thay đổi đường dẫn tới logo của bạn
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,14 +35,22 @@ function Header() {
         }`}
       >
         <div className="flex items-center">
-          <img src={Logo} alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10" />
-          <span className="ml-3 text-sm text-white cursor-pointer sm:text-lg md:text-xl drop-shadow-lg">
+          <img
+            src={Logo}
+            alt="Logo"
+            className="w-8 h-8 cursor-pointer sm:w-10 sm:h-10"
+            onClick={() => navigate("/dashboard")}
+          />
+          <span
+            className="ml-3 text-sm text-white cursor-pointer sm:text-lg md:text-xl drop-shadow-lg"
+            onClick={() => navigate("/dashboard")}
+          >
             WEBSITE QUAN TRẮC, DỰ BÁO MÔI TRƯỜNG
           </span>
         </div>
         <div className="flex items-center space-x-4">
           <div className="justify-center hidden space-x-3 lg:flex">
-            <a href="#" className="flex items-center text-white">
+            <Link to="/" className="flex items-center text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -56,8 +66,8 @@ function Header() {
                 />
               </svg>
               <span className="text-white">Trang chủ</span>
-            </a>
-            <a href="#" className="flex items-center text-white">
+            </Link>
+            <Link to="/dashboard" className="flex items-center text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -73,8 +83,8 @@ function Header() {
                 />
               </svg>
               <span className="text-white">Thuộc tính</span>
-            </a>
-            <a href="#" className="flex items-center text-white">
+            </Link>
+            <Link to="/dashboard" className="flex items-center text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -90,8 +100,8 @@ function Header() {
                 />
               </svg>
               <span className="hidden sm:inline">Bảng tin</span>
-            </a>
-            <a href="#" className="flex items-center text-white">
+            </Link>
+            <Link to="/map" className="flex items-center text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -107,8 +117,8 @@ function Header() {
                 />
               </svg>
               <span className="hidden sm:inline">Bản đồ</span>
-            </a>
-            <a href="#" className="flex items-center text-white">
+            </Link>
+            <Link to="/details" className="flex items-center text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -124,7 +134,7 @@ function Header() {
                 />
               </svg>
               <span className="hidden sm:inline">Chi tiết</span>
-            </a>
+            </Link>
           </div>
 
           {/* Menu di động */}
@@ -155,8 +165,8 @@ function Header() {
 
             {/* Mobile Menu */}
             <div className="flex flex-col mt-20 ml-4 space-y-4 items-left">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="flex p-3 text-xl rounded-l-md hover:text-white hover:scale-110 bg-secondary"
               >
                 <svg
@@ -174,9 +184,9 @@ function Header() {
                   />
                 </svg>
                 Trang chủ
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/dashboard"
                 className="flex p-3 text-xl rounded-l-md hover:text-white hover:scale-110 bg-secondary"
               >
                 <svg
@@ -194,9 +204,9 @@ function Header() {
                   />
                 </svg>
                 Thuộc tính
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/dashboard"
                 className="flex p-3 text-xl rounded-l-md hover:text-white hover:scale-110 bg-secondary"
               >
                 <svg
@@ -214,9 +224,9 @@ function Header() {
                   />
                 </svg>
                 Bảng tin
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/map"
                 className="flex p-3 text-xl rounded-l-md hover:text-white hover:scale-110 bg-secondary"
               >
                 <svg
@@ -234,9 +244,9 @@ function Header() {
                   />
                 </svg>
                 Bản đồ
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/details"
                 className="flex p-3 text-xl rounded-l-md hover:text-white hover:scale-110 bg-secondary"
               >
                 <svg
@@ -254,7 +264,7 @@ function Header() {
                   />
                 </svg>
                 Chi tiết
-              </a>
+              </Link>
             </div>
           </div>
 
