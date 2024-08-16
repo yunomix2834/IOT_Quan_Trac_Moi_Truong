@@ -27,11 +27,12 @@ export default function Home() {
         }`}
       >
         <a
-          href="#"
-          className="text-xl text-white cursor-pointer drop-shadow-lg"
+          href="/"
+          className="text-4xl font-extrabold tracking-wide text-white transition-transform transform cursor-pointer drop-shadow-2xl hover:scale-105"
         >
-          KTTV Tự động
+          HTQT Tự Động
         </a>
+
         <div className="flex items-center space-x-4">
           <div className="relative">
             <input
@@ -85,12 +86,14 @@ export default function Home() {
         ></div>
         <div className="absolute inset-0 opacity-50 bg-primary"></div>
         <div className="relative z-10 text-center">
-          <h2 className="mb-4 text-5xl font-bold text-white drop-shadow-lg">
+          <h2 className="mb-4 text-5xl font-extrabold leading-tight tracking-widest text-white transition-transform transform drop-shadow-2xl hover:scale-105">
             Website Quan trắc môi trường
           </h2>
-          <p className="mb-8 text-2xl text-gray-300 drop-shadow-lg">
+
+          <p className="mb-8 text-2xl font-semibold leading-relaxed tracking-wider text-gray-200 transition-transform transform drop-shadow-lg hover:scale-105">
             Hệ thống quan trắc môi trường, dự đoán tự động
           </p>
+
           <div className="flex justify-center space-x-4">
             <button className="flex items-center px-8 py-3 space-x-2 transition-transform transform rounded-lg drop-shadow-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-105">
               <svg
@@ -110,24 +113,6 @@ export default function Home() {
               <Link to="/dashboard">
                 <span className="font-bold text-white">TRUY CẬP HỆ THỐNG</span>
               </Link>{" "}
-            </button>
-            <button className="flex items-center px-8 py-3 space-x-2 transition-transform transform rounded-lg drop-shadow-lg bg-primary text-primary-foreground hover:bg-primary/80 hover:scale-105">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                />
-              </svg>
-
-              <span className="font-bold text-white">ĐĂNG NHẬP</span>
             </button>
           </div>
         </div>
