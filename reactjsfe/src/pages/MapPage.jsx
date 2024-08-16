@@ -8,7 +8,7 @@ function MapPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow p-4 md:p-8 lg:p-16">
-        <h1 className="mb-4 text-2xl font-bold text-center md:text-3xl lg:text-4xl">
+        <h1 className="mt-20 mb-4 text-2xl font-bold text-center md:text-3xl lg:text-4xl">
           Google Map
         </h1>
         <Map />
