@@ -49,7 +49,6 @@ export const convertMQ7Value = (mq7Value) => {
   return Math.round(mq7);
 };
 
-
 // Chuyển đổi giá trị từ cảm biến bụi thành AQI
 export const convertDustDensity = (dustDensityValue) => {
   const pm25 = dustDensityValue * 500; // Giả sử 1024 tương ứng với 500 µg/m³
@@ -75,7 +74,6 @@ export const convertDustDensity = (dustDensityValue) => {
   return Math.round(dustDensity);
 };
 
-
 // Chuyển đổi giá trị nhiệt độ từ DHT11
 export const convertTemperature = (temperature) => {
   return `${temperature}`; //đơn vị °C
@@ -85,7 +83,6 @@ export const convertTemperature = (temperature) => {
 export const convertHumidity = (humidity) => {
   return `${humidity}`; //đơn vị %
 };
-
 
 // Chuyển đổi mức độ đo sang label
 // Hàm chuyển đổi nhiệt độ
@@ -125,7 +122,6 @@ export const convertMQ7ValueToLabel = (mq7) => {
   if (mq7 <= 400) return "Không khí rất không lành mạnh";
   return "Không khí nguy hiểm";
 };
-
 
 // Hàm chuyển đổi ánh sáng (Lux)
 export const convertLightToLuxToLabel = (light) => {
