@@ -27,7 +27,7 @@ function Details() {
         <h1 className="mt-10 mb-10 text-4xl font-extrabold text-center text-gray-800">
           Danh sách trạm quan trắc
         </h1>
-        <div className="overflow-x-auto">
+        <div className="m-3 overflow-x-auto">
           <table className="min-w-full overflow-hidden bg-white rounded-lg shadow-md">
             <thead className="text-white bg-primary">
               <tr>

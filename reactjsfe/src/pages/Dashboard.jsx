@@ -162,10 +162,10 @@ function Dashboard() {
 
   // Hàm chuyển đổi ánh sáng (Lux)
   const convertLightToLuxToLabel = (light) => {
-    if (light <= 100) return "Rất tối";
-    if (light <= 500) return "Tối";
-    if (light <= 1000) return "Ánh sáng bình thường";
-    if (light <= 5000) return "Sáng";
+    if (light <= 700) return "Rất tối";
+    if (light <= 3000) return "Tối";
+    if (light <= 6000) return "Ánh sáng bình thường";
+    if (light <= 10000) return "Sáng";
     return "Rất sáng";
   };
 
