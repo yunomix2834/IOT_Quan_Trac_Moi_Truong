@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface SensorDataRepository extends JpaRepository<SensorData, Integer> {
 
-    @Query("SELECT COUNT(s) FROM SensorData s WHERE s.timestamp BETWEEN :start AND :end")
-    long countByTimestampBetween(LocalDateTime start, LocalDateTime end);
+    @Query("SELECT s FROM SensorData s WHERE s.timestamp BETWEEN :start AND :end")
+    List<SensorData> findByTimestampBetween(LocalDateTime start, LocalDateTime end);
 
     SensorData findTopByOrderByIdDesc();
 }

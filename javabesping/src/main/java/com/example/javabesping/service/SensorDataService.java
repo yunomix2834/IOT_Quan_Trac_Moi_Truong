@@ -22,7 +22,7 @@ public class SensorDataService {
         return sensorDataRepository.findTopByOrderByIdDesc();
     }
 
-    public long countSensorDataByTimestamp(LocalDateTime start, LocalDateTime end) {
-        return sensorDataRepository.countByTimestampBetween(start, end);
+    public List<SensorData> findSensorDataByTimestamp(LocalDateTime start, LocalDateTime end) {
+        return sensorDataRepository.findByTimestampBetween(start, end);
     }
 }
