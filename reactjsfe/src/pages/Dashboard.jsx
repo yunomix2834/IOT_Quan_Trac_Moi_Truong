@@ -136,7 +136,7 @@ function Dashboard() {
       <main className="relative flex flex-col items-center justify-center min-h-screen pt-28 bg-[#f5f5f5]">
         <div className="justify-center w-11/12 p-4 ">
           <div></div>
-          <div className="flex">
+          <div className="lg:flex">
             {/* Trạm Hà Đông */}
             <section className="w-auto p-6 m-4 border rounded-lg shadow-lg bg-card text-card-foreground border-border">
               <h2 className="flex items-center text-2xl font-bold">
@@ -196,43 +196,43 @@ function Dashboard() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4 p-4">
-                <div className="p-4 bg-blue-100 rounded-lg">
+              <div className="gap-4 p-4 md:grid md:grid-cols-2 ">
+                <div className="p-4 mt-1 bg-blue-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Nhiệt độ</h3>
                   <p className="text-sm">
                     {convertTemperatureToLabel(sensorData.temperature)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-green-100 rounded-lg">
+                <div className="p-4 mt-1 bg-green-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Độ ẩm</h3>
                   <p className="text-sm">
                     {convertHumidityToLabel(sensorData.humidity)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-yellow-100 rounded-lg">
+                <div className="p-4 mt-1 bg-yellow-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Độ bụi</h3>
                   <p className="text-sm">
                     {convertDustDensityToLabel(sensorData.dustDensity)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-red-100 rounded-lg">
+                <div className="p-4 mt-1 bg-red-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">CO (PPM)</h3>
                   <p className="text-sm">
                     {convertMQ7ValueToLabel(sensorData.mq7)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-purple-100 rounded-lg">
+                <div className="p-4 mt-1 bg-purple-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Ánh sáng</h3>
                   <p className="text-sm">
                     {convertLightToLuxToLabel(sensorData.light)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-blue-100 rounded-lg">
+                <div className="p-4 mt-1 bg-blue-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Mưa</h3>
                   <p className="text-sm">
                     {convertRainValueToLabel(sensorData.rain)}
@@ -245,7 +245,6 @@ function Dashboard() {
                 <span className="font-semibold">{sensorData.timestamp}</span>
               </p>
             </section>
-
             {/* Form Dự Báo */}
             <section className="w-auto p-6 m-4 border rounded-lg shadow-lg bg-card text-card-foreground border-border">
               <h2 className="text-2xl font-bold">Dự báo trong tuần</h2>
@@ -288,43 +287,43 @@ function Dashboard() {
                   svgPath="/src/assets/rain.jpg"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4 p-4">
-                <div className="p-4 bg-blue-100 rounded-lg">
+              <div className="gap-4 p-4 md:grid md:grid-cols-2 ">
+                <div className="p-4 mt-1 bg-blue-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Nhiệt độ</h3>
                   <p className="text-sm">
                     {convertTemperatureToLabel(predictions.temperature)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-green-100 rounded-lg">
+                <div className="p-4 mt-1 bg-green-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Độ ẩm</h3>
                   <p className="text-sm">
                     {convertHumidityToLabel(predictions.humidity)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-yellow-100 rounded-lg">
+                <div className="p-4 mt-1 bg-yellow-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Độ bụi</h3>
                   <p className="text-sm">
                     {convertDustDensityToLabel(predictions.dustDensity)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-red-100 rounded-lg">
+                <div className="p-4 mt-1 bg-red-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">CO (PPM)</h3>
                   <p className="text-sm">
                     {convertMQ7ValueToLabel(predictions.mq7)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-purple-100 rounded-lg">
+                <div className="p-4 mt-1 bg-purple-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Ánh sáng</h3>
                   <p className="text-sm">
                     {convertLightToLuxToLabel(predictions.light)}
                   </p>
                 </div>
 
-                <div className="p-4 bg-blue-100 rounded-lg">
+                <div className="p-4 mt-1 bg-blue-100 rounded-lg md:mt-0">
                   <h3 className="text-lg font-semibold">Mưa</h3>
                   <p className="text-sm">
                     {convertRainValueToLabel(predictions.rain)}

@@ -22,23 +22,23 @@ export default function Home() {
   return (
     <div className="bg-background text-foreground font-manrope">
       <header
-        className={`p-5 pr-10 pl-10 fixed w-full z-50 transition-colors duration-300 flex justify-between items-center ${
+        className={`p-5 sm:pr-10 sm:pl-10 fixed w-full z-50 transition-colors duration-300 sm:flex justify-between items-center ${
           isScrolled ? "bg-[#423292]" : "bg-transparent"
         }`}
       >
         <a
           href="/"
-          className="text-4xl font-extrabold tracking-wide text-white transition-transform transform cursor-pointer drop-shadow-2xl hover:scale-105"
+          className="text-xl font-extrabold tracking-wide text-white transition-transform transform cursor-pointer md:text-4xl drop-shadow-2xl hover:scale-105"
         >
           HTQT Tự Động
         </a>
 
-        <div className="flex items-center space-x-4">
-          <div className="relative">
+        <div className="flex items-center pt-3 space-x-8 sm:pt-0 md:space-x-4">
+          <div className="relative w-full">
             <input
               type="text"
               placeholder="Tìm kiếm..."
-              className="px-4 py-2 text-black bg-white rounded-lg"
+              className="w-full px-4 py-2 text-black bg-white rounded-lg sm:w-auto"
             />
             <button className="absolute right-2 top-2">
               <svg
@@ -86,11 +86,11 @@ export default function Home() {
         ></div>
         <div className="absolute inset-0 opacity-50 bg-primary"></div>
         <div className="relative z-10 text-center">
-          <h2 className="mb-4 text-5xl font-extrabold leading-tight tracking-widest text-white transition-transform transform drop-shadow-2xl hover:scale-105">
+          <h2 className="w-auto mb-4 text-xl font-extrabold leading-tight tracking-widest text-white transition-transform transform md:text-3xl lg:text-5xl drop-shadow-2xl hover:scale-105">
             Website Quan trắc môi trường
           </h2>
 
-          <p className="mb-8 text-2xl font-semibold leading-relaxed tracking-wider text-gray-200 transition-transform transform drop-shadow-lg hover:scale-105">
+          <p className="mb-8 font-semibold leading-relaxed tracking-wider text-gray-200 transition-transform transform text-md md:text-xl lg:text-2xl drop-shadow-lg hover:scale-105">
             Hệ thống quan trắc môi trường, dự đoán tự động
           </p>
 

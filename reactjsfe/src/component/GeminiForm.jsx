@@ -89,17 +89,17 @@ const GeminiForm = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">Weather Analysis</h1>
+    <div className="w-full p-6 mx-auto bg-white rounded-lg shadow-md">
+      <h1 className="mb-6 text-2xl font-bold text-center text-gray-800">Weather Analysis</h1>
       <form className="space-y-4">
-        <div className="hidden grid grid-cols-2 gap-4">
+        <div className="grid hidden grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Temperature:</label>
             <input
               type="text"
               value={sensorData.temperature}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
           <div>
@@ -108,7 +108,7 @@ const GeminiForm = () => {
               type="text"
               value={sensorData.light}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
           <div>
@@ -117,7 +117,7 @@ const GeminiForm = () => {
               type="text"
               value={sensorData.dustDensity}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
           <div>
@@ -126,7 +126,7 @@ const GeminiForm = () => {
               type="text"
               value={sensorData.mq7}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
           <div>
@@ -135,7 +135,7 @@ const GeminiForm = () => {
               type="text"
               value={sensorData.rain}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
           <div>
@@ -144,7 +144,7 @@ const GeminiForm = () => {
               type="text"
               value={sensorData.humidity}
               readOnly
-              className="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
         </div>
@@ -155,7 +155,7 @@ const GeminiForm = () => {
             onChange={handlePromptChange}
             disabled={loading}
             required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           >
             <option value="" disabled>Chọn thông tin quan tâm</option>
             <option value="Thông số thời tiết này thuận lợi cho làm việc gì ?">Thông số thời tiết này thuận lợi cho làm việc gì ?</option>
@@ -168,8 +168,8 @@ const GeminiForm = () => {
       {loading && <p className="mt-4 text-center text-indigo-600">Loading...</p>}
 
       {response && (
-        <div className="mt-6 bg-gray-100 p-4 rounded-lg shadow-inner">
-          <h3 className="text-lg font-medium text-gray-900">Response:</h3>
+        <div className="p-4 mt-6 bg-gray-100 rounded-lg shadow-inner">
+          <h3 className="text-lg font-medium text-gray-900">Một số thông tin hữu ích:</h3>
           <ReactMarkdown className="prose prose-indigo">{response}</ReactMarkdown>
         </div>
       )}
