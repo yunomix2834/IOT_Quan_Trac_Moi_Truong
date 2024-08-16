@@ -179,13 +179,13 @@ function Dashboard() {
                 <SensorCard
                   title="CO Concentration"
                   value={sensorData.mq7}
-                  unit="/1000 PPM"
+                  unit="PPM"
                   svgPath="/src/assets/CO.jpg"
                 />
                 <SensorCard
                   title="Light"
                   value={sensorData.light}
-                  unit="/10000 Lux"
+                  unit="Lux"
                   svgPath="/src/assets/light.jpg"
                 />
                 <SensorCard
@@ -272,13 +272,13 @@ function Dashboard() {
                 <SensorCard
                   title="CO Concentration"
                   value={predictions.mq7}
-                  unit="/1000 PPM"
+                  unit="PPM"
                   svgPath="/src/assets/CO.jpg"
                 />
                 <SensorCard
                   title="Light"
                   value={predictions.light}
-                  unit="/10000 Lux"
+                  unit="Lux"
                   svgPath="/src/assets/light.jpg"
                 />
                 <SensorCard
