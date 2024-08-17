@@ -26,7 +26,7 @@ export const convertRainValue = (rainValue) => {
 // Chuyển đổi giá trị từ cảm biến MQ-7 thành mức độ CO theo AQI
 export const convertMQ7Value = (mq7Value) => {
   // MQ-7: giá trị thô (0-1024)
-  const ppm = (mq7Value / 1024) * 100; // Giả sử 1024 tương ứng với 100 ppm CO
+  const ppm = (mq7Value / 1024) * 100; //mức 1024 tương ứng với mức đo tối đa (100%) của module MQ-7 CO đo tối đa là 2000ppm
 
   let mq7 = 0;
 
@@ -51,7 +51,7 @@ export const convertMQ7Value = (mq7Value) => {
 
 // Chuyển đổi giá trị từ cảm biến bụi thành AQI
 export const convertDustDensity = (dustDensityValue) => {
-  const pm25 = dustDensityValue * 500; // Giả sử 1024 tương ứng với 500 µg/m³
+  const pm25 = dustDensityValue * 500; // mức đo từ 0 - 1 tương ứng với 0 - 500 µg/m³
 
   let dustDensity = 0;
 
