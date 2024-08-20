@@ -1,6 +1,12 @@
 import pandas as pd
 import numpy as np
 
+def remove_outliers(df, columns, threshold=3):
+    for column in columns:
+        mean = df[column].mean()
+        std = df[column].std()
+        df = df[(df[column] > mean - threshold * std) & (df[column] < mean + threshold * std)]
+    return df
 
 def load_and_preprocess_data(file_path):
     data = pd.read_csv(file_path)
@@ -8,6 +14,7 @@ def load_and_preprocess_data(file_path):
 
     # Xử lý cột 'Rain'
     data['Rain'] = data['Rain'].str.replace('=', '').astype(float)
+    print(data['Rain'])
 
     # Kiểm tra và xử lý các giá trị âm trong 'DustDensity'
     data['DustDensity'] = data['DustDensity'].apply(lambda x: np.nan if x < 0 else x)
@@ -23,8 +30,13 @@ def load_and_preprocess_data(file_path):
     data['Timestamp'] = pd.to_datetime(data['Timestamp'])
 
     # Lọc dữ liệu trong 2 ngày đầu tiên
-    start_date = data['Timestamp'].min()
-    end_date = start_date + pd.Timedelta(days=2)
-    filtered_data = data[(data['Timestamp'] >= start_date) & (data['Timestamp'] <= end_date)]
+    # start_date = data['Timestamp'].min()
+    # end_date = start_date + pd.Timedelta(days=1)
+    # data = data[(data['Timestamp'] >= start_date) & (data['Timestamp'] < end_date)]
 
-    return filtered_data
+    # Loại bỏ các giá trị ngoại lệ trên các cột chính
+    columns_to_check = ['Temperature', 'Humidity', 'DustDensity', 'MQ7', 'Light', 'Rain']
+    data = remove_outliers(data, columns_to_check)
+
+    # Trả về toàn bộ dữ liệu đã tiền xử lý và lọc
+    return data

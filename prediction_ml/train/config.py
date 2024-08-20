@@ -3,12 +3,11 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, A
 from sklearn.svm import SVR
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.preprocessing import StandardScaler, FunctionTransformer
+from sklearn.preprocessing import StandardScaler, FunctionTransformer, PolynomialFeatures
 from sklearn.impute import SimpleImputer
 import xgboost as xgb
 import pandas as pd
 import numpy as np
-
 
 def custom_interpolation(X):
     # Đảm bảo X là một DataFrame
@@ -24,12 +23,12 @@ def custom_interpolation(X):
 
     return X
 
-
 # Tạo Pipeline với tiền xử lý và mô hình
 pipeline = Pipeline([
     ('imputer', SimpleImputer(strategy='mean')),  # Điền giá trị thiếu bằng giá trị trung bình
     ('interpolator', FunctionTransformer(custom_interpolation, validate=False)),
     ('scaler', StandardScaler()),  # Chuẩn hóa dữ liệu
+    ('poly', PolynomialFeatures(degree=2, include_bias=False)),  # Tạo các đặc trưng bậc cao
     ('model', RandomForestRegressor(random_state=42))  # Model mặc định ban đầu
 ])
 
