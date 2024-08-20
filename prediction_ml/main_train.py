@@ -21,10 +21,10 @@ for column in X.columns:
         X_clean = X.drop(columns=[column])
         y_clean = y
 
-    best_model, X_test, y_test = train_model(X_clean, y_clean, param_grid)
-    mse, r2, accuracy, y_pred = evaluate_model(best_model, X_test, y_test)
+    best_model = train_model(X_clean, y_clean, param_grid)
+    mse, r2, accuracy, y_pred = evaluate_model(best_model, X_clean, y_clean)
     models[column] = best_model
-    plot_predictions(y_test, y_pred, column)
+    plot_predictions(y_clean, y_pred, column)
     print(f'{column}: MSE={mse}, R2={r2}, Accuracy={accuracy}%')
 
 # Lưu các model đã train
