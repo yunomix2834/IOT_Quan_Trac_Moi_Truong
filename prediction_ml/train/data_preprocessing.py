@@ -10,33 +10,29 @@ def remove_outliers(df, columns, threshold=3):
 
 def load_and_preprocess_data(file_path):
     data = pd.read_csv(file_path)
-    data = data.drop(columns=['Id'])
-
-    # Xử lý cột 'Rain'
-    data['Rain'] = data['Rain'].str.replace('=', '').astype(float)
-    print(data['Rain'])
 
     # Kiểm tra và xử lý các giá trị âm trong 'DustDensity'
     data['DustDensity'] = data['DustDensity'].apply(lambda x: np.nan if x < 0 else x)
-
-    # Thực hiện nội suy và điền giá trị NaN
     data['DustDensity'] = data['DustDensity'].interpolate(method='linear')
 
-    # Thay thế fillna với phương pháp bfill và ffill
-    data['DustDensity'] = data['DustDensity'].bfill()
-    data['DustDensity'] = data['DustDensity'].ffill()
+    # Loại bỏ các giá trị mưa không hợp lệ
+    invalid_rain_indices = data[(data['Rain'] < 600)].index
+    data.loc[invalid_rain_indices, 'Rain'] = np.nan
+    data['Rain'] = data['Rain'].interpolate(method='linear')
 
     # Chuyển đổi cột 'Timestamp' thành định dạng datetime
     data['Timestamp'] = pd.to_datetime(data['Timestamp'])
-
-    # Lọc dữ liệu trong 2 ngày đầu tiên
-    # start_date = data['Timestamp'].min()
-    # end_date = start_date + pd.Timedelta(days=1)
-    # data = data[(data['Timestamp'] >= start_date) & (data['Timestamp'] < end_date)]
 
     # Loại bỏ các giá trị ngoại lệ trên các cột chính
     columns_to_check = ['Temperature', 'Humidity', 'DustDensity', 'MQ7', 'Light', 'Rain']
     data = remove_outliers(data, columns_to_check)
 
-    # Trả về toàn bộ dữ liệu đã tiền xử lý và lọc
+    # Tạo thêm các đặc trưng từ Timestamp như giờ, ngày, tháng
+    data['Hour'] = data['Timestamp'].dt.hour
+    data['Day'] = data['Timestamp'].dt.day
+    data['Month'] = data['Timestamp'].dt.month
+
+    # Chuyển đổi Timestamp sang định dạng số
+    data['Timestamp'] = data['Timestamp'].astype(np.int64) // 10**9
+
     return data

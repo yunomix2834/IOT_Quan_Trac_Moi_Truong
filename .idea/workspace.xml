@@ -35,7 +35,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/IOT_Quan_Trac_Moi_Truong/javabesping",
+    "last_opened_file_path": "E:/New folder/IOT_Quan_Trac_Moi_Truong/prediction_ml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,7 +52,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.347" />
+        <option value="bundled-python-sdk-c2d6afa66fbe-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.347" />
       </set>
     </attachedChunks>
   </component>
@@ -67,6 +68,7 @@
       <workItem from="1723706951218" duration="653000" />
       <workItem from="1723710696165" duration="57000" />
       <workItem from="1723775554111" duration="8000" />
+      <workItem from="1724143257596" duration="22000" />
     </task>
     <servers />
   </component>
