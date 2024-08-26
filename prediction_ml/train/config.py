@@ -29,31 +29,31 @@ pipeline = Pipeline([
 param_grid = [
     {  # Param cho RandomForestRegressor
         'model': [RandomForestRegressor(random_state=42)],
-        'model__n_estimators': [50, 100, 200],
-        'model__max_depth': [None, 10, 20, 30],
+        'model__n_estimators': [100, 200, 300], #Tăng số lượng cây
+        'model__max_depth': [None, 10, 20], # Giảm độ sâu để tránh overfitting
         'model__min_samples_split': [2, 5, 10],
         'model__min_samples_leaf': [1, 2, 4],
         'model__bootstrap': [True, False]
     },
     {  # Param cho GradientBoostingRegressor
         'model': [GradientBoostingRegressor(random_state=42)],
-        'model__n_estimators': [50, 100, 200],
-        'model__max_depth': [3, 5, 7],
-        'model__learning_rate': [0.01, 0.1, 0.2],
+        'model__n_estimators': [100, 200, 300],  # Tăng số lượng cây
+        'model__max_depth': [3, 5],  # Giữ độ sâu thấp để tránh overfitting
+        'model__learning_rate': [0.05, 0.1, 0.2],  # Điều chỉnh tốc độ học
         'model__subsample': [0.8, 1.0]
     },
     {  # Param cho XGBoost
         'model': [xgb.XGBRegressor(objective='reg:squarederror', random_state=42)],
-        'model__n_estimators': [50, 100, 200],
-        'model__max_depth': [3, 5, 7],
-        'model__learning_rate': [0.01, 0.1, 0.2],
+        'model__n_estimators': [100, 200, 300],  # Tăng số lượng cây
+        'model__max_depth': [3, 5],  # Giữ độ sâu thấp để tránh overfitting
+        'model__learning_rate': [0.05, 0.1, 0.2],  # Điều chỉnh tốc độ học
         'model__subsample': [0.8, 1.0],
         'model__colsample_bytree': [0.8, 1.0]
     },
     {  # Param cho SVR
         'model': [SVR()],
         'model__kernel': ['linear', 'rbf'],
-        'model__C': [0.1, 1, 10],
+        'model__C': [1, 10, 100],  # Điều chỉnh C để tăng khả năng điều chỉnh
         'model__gamma': ['scale', 'auto']
     },
 ]
