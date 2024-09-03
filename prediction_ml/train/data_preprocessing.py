@@ -27,6 +27,8 @@ def load_and_preprocess_data(file_path):
     columns_to_check = ['Temperature', 'Humidity', 'DustDensity', 'MQ7', 'Light', 'Rain']
     data = remove_outliers(data, columns_to_check)
 
+    data[columns_to_check] = data[columns_to_check].round(1)
+
     start_date = data['Timestamp'].min()
     end_date = start_date + pd.Timedelta(days=7)
     filtered_data = data[(data['Timestamp'] >= start_date) & (data['Timestamp'] <= end_date)]

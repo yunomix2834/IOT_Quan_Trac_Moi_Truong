@@ -11,6 +11,9 @@ def predict():
     try:
         data = request.json
         predictions = make_predictions(models, data)
+
+        predictions = {k: round(float(v), 1) for k, v in predictions.items()}
+
         return jsonify({'predictions': predictions})
     except Exception as e:
         return jsonify({'error': str(e)})

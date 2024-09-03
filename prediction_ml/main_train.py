@@ -2,7 +2,7 @@ from train import load_and_preprocess_data, train_model, evaluate_model, plot_pr
 import joblib
 
 # Load và preprocess dữ liệu
-file_path = './database/database_15k.csv'
+file_path = './database/database_15k_test.csv'
 data = load_and_preprocess_data(file_path)
 
 # Loại bỏ cột Timestamp cho quá trình training
