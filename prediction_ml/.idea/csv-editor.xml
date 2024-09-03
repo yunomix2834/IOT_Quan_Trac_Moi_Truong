@@ -17,13 +17,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\test\visualization\database_15k_test.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>
