@@ -1,5 +1,4 @@
 package com.example.javabesping.controller;
-
 import com.example.javabesping.entity.SensorData;
 import com.example.javabesping.service.SensorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +13,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 @RestController
 @RequestMapping("/api/sensorData")
 public class SensorDataController {
-
     @Autowired
     private SensorDataService sensorDataService;
-
     @GetMapping("/stream")
     public SseEmitter streamSensorData() {
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
         executor.execute(() -> {
             try {
                 while (true) {
@@ -46,10 +41,8 @@ public class SensorDataController {
                 emitter.complete();
             }
         });
-
         return emitter;
     }
-
     @GetMapping("/countByTimestamp") //cách dùng: http://localhost:8081/api/sensorData/countByTimestamp?start=24-08-14 00:00:00.000&end=24-08-14 23:59:59.999
     public long countByTimestamp(
             @RequestParam("start") String start,

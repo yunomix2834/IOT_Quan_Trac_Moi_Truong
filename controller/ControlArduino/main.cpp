@@ -13,16 +13,12 @@ bool insertDataToSQLServer(string temperature, string humidity, string dustDensi
     SQLHANDLE sqlConnHandle;
     SQLHANDLE sqlStmtHandle;
     SQLRETURN retCode = 0;
-
     if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &sqlEnvHandle))
         return false;
-
     if (SQL_SUCCESS != SQLSetEnvAttr(sqlEnvHandle, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0))
         return false;
-
     if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_DBC, sqlEnvHandle, &sqlConnHandle))
         return false;
-
     SQLCHAR retConString[1024];
     switch (SQLDriverConnect(sqlConnHandle, NULL,
            (SQLCHAR*)"DRIVER={SQL Server};SERVER=SQL8020.site4now.net;DATABASE=db_aac032_yunomix2834;UID=db_aac032_yunomix2834_admin;PWD=dinhanst2832004;",
@@ -36,33 +32,26 @@ bool insertDataToSQLServer(string temperature, string humidity, string dustDensi
         default:
             break;
            }
-
     if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_STMT, sqlConnHandle, &sqlStmtHandle))
         return false;
-
     string query = "INSERT INTO SensorData (Temperature, Humidity, DustDensity, MQ7, Light, Rain) VALUES ('" +
                    temperature + "', '" + humidity + "', '" + dustDensity + "', '" + mq7Value + "', '" + lightValue + "', '" + rainValue + "')";
-
     if (SQL_SUCCESS != SQLExecDirect(sqlStmtHandle, (SQLCHAR*)query.c_str(), SQL_NTS)) {
         return false;
     }
-
     SQLFreeHandle(SQL_HANDLE_STMT, sqlStmtHandle);
     SQLDisconnect(sqlConnHandle);
     SQLFreeHandle(SQL_HANDLE_DBC, sqlConnHandle);
     SQLFreeHandle(SQL_HANDLE_ENV, sqlEnvHandle);
-
     return true;
 }
 
 int main() {
     HANDLE hSerial;
     hSerial = CreateFile("COM3", GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
-
     if (hSerial == INVALID_HANDLE_VALUE) {
         DWORD dwError = GetLastError();
         cerr << "Failed to open COM port. Error code: " << dwError << endl;
-
         if (dwError == ERROR_FILE_NOT_FOUND) {
             cerr << "The specified COM port does not exist." << endl;
         } else if (dwError == ERROR_ACCESS_DENIED) {
@@ -70,10 +59,8 @@ int main() {
         } else {
             cerr << "An unknown error occurred." << endl;
         }
-
         return 1;
     }
-
     DCB dcbSerialParams = { 0 };
     dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
     GetCommState(hSerial, &dcbSerialParams);
@@ -97,9 +84,7 @@ int main() {
         if (ReadFile(hSerial, buffer, sizeof(buffer), &bytesRead, NULL)) {
             buffer[bytesRead] = '\0';
             string data(buffer);
-
             cout << "Received data: " << data << endl;  // Kiểm tra dữ liệu nhận được
-
             // Kiểm tra xem chuỗi có chứa tất cả các phần cần thiết không
             if (data.find("Temp=") != string::npos &&
                 data.find(",Humid=") != string::npos &&
@@ -107,7 +92,6 @@ int main() {
                 data.find(",MQ7=") != string::npos &&
                 data.find(",Light=") != string::npos &&
                 data.find(",Rain=") != string::npos) {
-
                 // Xử lý chuỗi
                 size_t tempPos = data.find("Temp=");
                 size_t humidPos = data.find(",Humid=");
@@ -115,14 +99,12 @@ int main() {
                 size_t mq7Pos = data.find(",MQ7=");
                 size_t lightPos = data.find(",Light=");
                 size_t rainPos = data.find(",Rain=");
-
                 string temperature = data.substr(tempPos + 5, humidPos - (tempPos + 5));
                 string humidity = data.substr(humidPos + 7, dustPos - (humidPos + 7));
                 string dustDensity = data.substr(dustPos + 6, mq7Pos - (dustPos + 6));
                 string mq7Value = data.substr(mq7Pos + 5, lightPos - (mq7Pos + 5));
                 string lightValue = data.substr(lightPos + 7, rainPos - (lightPos + 7));
                 string rainValue = data.substr(rainPos + 5);
-
                 if (insertDataToSQLServer(temperature, humidity, dustDensity, mq7Value, lightValue, rainValue)) {
                     cout << "Data saved to SQL Server: " << data << endl;
                 } else {

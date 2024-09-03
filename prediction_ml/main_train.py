@@ -6,7 +6,7 @@ from train.config import pipeline
 import numpy as np
 
 # Load và preprocess dữ liệu
-file_path = './database/database_15k_test.csv'
+file_path = './database/database_15k.csv'
 data = load_and_preprocess_data(file_path)
 
 # Tách đặc trưng và nhãn
