@@ -27,12 +27,8 @@ def load_and_preprocess_data(file_path):
     columns_to_check = ['Temperature', 'Humidity', 'DustDensity', 'MQ7', 'Light', 'Rain']
     data = remove_outliers(data, columns_to_check)
 
-    # Tạo thêm các đặc trưng từ Timestamp như giờ, ngày, tháng
-    data['Hour'] = data['Timestamp'].dt.hour
-    data['Day'] = data['Timestamp'].dt.day
-    data['Month'] = data['Timestamp'].dt.month
+    start_date = data['Timestamp'].min()
+    end_date = start_date + pd.Timedelta(days=7)
+    filtered_data = data[(data['Timestamp'] >= start_date) & (data['Timestamp'] <= end_date)]
 
-    # Chuyển đổi Timestamp sang định dạng số
-    data['Timestamp'] = data['Timestamp'].astype(np.int64) // 10**9
-
-    return data
+    return filtered_data

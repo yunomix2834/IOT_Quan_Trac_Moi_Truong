@@ -1,4 +1,4 @@
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 def evaluate_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
