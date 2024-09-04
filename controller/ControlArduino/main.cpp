@@ -114,6 +114,8 @@ int main() {
                 cerr << "Data format error: missing one or more expected values." << endl;
             }
         }
+        // Thêm delay 5000ms giữa mỗi lần đọc dữ liệu và ghi vào database
+        Sleep(5000);
     }
 
     CloseHandle(hSerial);
