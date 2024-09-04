@@ -1,0 +1,74 @@
+CREATE TABLE SensorData (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    temperature FLOAT,
+    humidity FLOAT,
+    dustDensity FLOAT,
+    mq7Value FLOAT,
+    lightValue FLOAT,
+    rainAnalogValue FLOAT,
+    rainDigitalValue BIT,
+    timestamp DATETIME DEFAULT GETDATE()
+);
+
+
+#include <DHT11.h>
+
+#define DHT11_PIN 2
+#define DUST_LED_PIN 5
+#define DUST_ANALOG_PIN A2
+#define MQ7_A0 A1
+#define LIGHT_SENSOR_PIN A3
+#define RAIN_SENSOR_A0 A0
+#define RAIN_SENSOR_D0 3
+
+DHT11 dht11(DHT11_PIN);
+
+void setup() {
+    Serial.begin(9600);
+    pinMode(DUST_LED_PIN, OUTPUT);
+    pinMode(MQ7_A0, INPUT);
+    pinMode(LIGHT_SENSOR_PIN, INPUT);
+    pinMode(RAIN_SENSOR_D0, INPUT);
+}
+
+void loop() {
+    int temperature = 0;
+    int humidity = 0;
+    int dht11Result = dht11.readTemperatureHumidity(temperature, humidity);
+    if (dht11Result == 0) {
+        Serial.print("Temp=");
+        Serial.print(temperature);
+        Serial.print(",Humid=");
+        Serial.print(humidity);
+        Serial.print(",");
+    }
+
+    digitalWrite(DUST_LED_PIN, LOW);
+    delayMicroseconds(280);
+    int dustValue = analogRead(DUST_ANALOG_PIN);
+    delayMicroseconds(40);
+    digitalWrite(DUST_LED_PIN, HIGH);
+    delayMicroseconds(9680);
+    float dustVoltage = dustValue * (5.0 / 1023.0);
+    float dustDensity = 0.17 * dustVoltage - 0.1;
+    Serial.print("Dust=");
+    Serial.print(dustDensity);
+    Serial.print(",");
+
+    int mq7Value = analogRead(MQ7_A0);
+    Serial.print("MQ7=");
+    Serial.print(mq7Value);
+    Serial.print(",");
+
+    int lightValue = analogRead(LIGHT_SENSOR_PIN);
+    Serial.print("Light=");
+    Serial.print(lightValue);
+    Serial.print(",");
+
+    int rainAnalogValue = analogRead(RAIN_SENSOR_A0);
+    Serial.print("Rain=");
+    Serial.println(rainAnalogValue);
+
+    delay(5000);
+}
+
