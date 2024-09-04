@@ -1,3 +1,0 @@
-E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug/CMakeFiles/ControlArduino.dir
-E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug/CMakeFiles/rebuild_cache.dir
