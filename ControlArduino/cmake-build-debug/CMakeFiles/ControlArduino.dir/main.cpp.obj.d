@@ -1,5 +1,5 @@
 CMakeFiles/ControlArduino.dir/main.cpp.obj: \
- E:\Learn\IOT_Quan_Trac_Moi_Truong\controller\ControlArduino\main.cpp \
+ E:\Learn\IOT_Quan_Trac_Moi_Truong\ControlArduino\main.cpp \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -391,4 +391,6 @@ CMakeFiles/ControlArduino.dir/main.cpp.obj: \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sql.h \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sqltypes.h \
  C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sqlext.h \
- C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sqlucode.h
+ C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/x86_64-w64-mingw32/include/sqlucode.h \
+ C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
+ C:/Users/yunom/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc

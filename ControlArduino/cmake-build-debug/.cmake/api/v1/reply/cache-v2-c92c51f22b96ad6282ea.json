@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug"
+			"value" : "e:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -559,7 +559,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -631,7 +631,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino"
+			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1267,7 +1267,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug"
+			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino/cmake-build-debug"
 		},
 		{
 			"name" : "ControlArduino_IS_TOP_LEVEL",
@@ -1291,7 +1291,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino"
+			"value" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

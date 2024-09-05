@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug",
-		"source" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino"
+		"build" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino/cmake-build-debug",
+		"source" : "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino"
 	},
 	"version" : 
 	{

@@ -8,6 +8,9 @@ const SensorDataChart = () => {
   const [temperatureData, setTemperatureData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
   const [mq7Data, setMq7Data] = useState([]);
+  const [dustDensityData, setDustDensityData] = useState([]);
+  const [rainData, setRainData] = useState([]);
+  const [lightData, setLightData] = useState([]);
   const [labels, setLabels] = useState([]);
   const [selectedDate, setSelectedDate] = useState('24-08-14'); // Ngày mặc định
 
@@ -26,16 +29,26 @@ const SensorDataChart = () => {
       const temps = data.map(record => parseFloat(record.temperature));
       const humidities = data.map(record => parseFloat(record.humidity));
       const mq7s = data.map(record => parseFloat(record.mq7));
+      const dustDensities = data.map(record => parseFloat(record.dustDensity));
+
+      // Clean rain data by removing any '=' characters
+      const rains = data.map(record => parseFloat(record.rain.replace('=', '')));
+
+      const lights = data.map(record => parseFloat(record.light));
       const timeLabels = data.map(record => new Date(record.timestamp).toLocaleTimeString());
 
       setTemperatureData(temps);
       setHumidityData(humidities);
       setMq7Data(mq7s);
+      setDustDensityData(dustDensities);
+      setRainData(rains);
+      setLightData(lights);
       setLabels(timeLabels);
     } catch (error) {
       console.error('Error fetching sensor data:', error);
     }
   };
+
 
   useEffect(() => {
     fetchSensorData();
@@ -77,6 +90,42 @@ const SensorDataChart = () => {
     ],
   };
 
+  const dustDensityChart = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Dust Density',
+        data: dustDensityData,
+        borderColor: 'rgba(255, 159, 64, 1)',
+        backgroundColor: 'rgba(255, 159, 64, 0.5)',
+      }
+    ],
+  };
+
+  const rainChart = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Rain',
+        data: rainData,
+        borderColor: 'rgba(153, 102, 255, 1)',
+        backgroundColor: 'rgba(153, 102, 255, 0.5)',
+      }
+    ],
+  };
+
+  const lightChart = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Light',
+        data: lightData,
+        borderColor: 'rgba(255, 206, 86, 1)',
+        backgroundColor: 'rgba(255, 206, 86, 0.5)',
+      }
+    ],
+  };
+
   const options = {
     responsive: true,
     plugins: {
@@ -91,29 +140,44 @@ const SensorDataChart = () => {
   };
 
   return (
-    <div className="m-4">
-      <div className="mb-8 flex">
-        <label htmlFor="date-select" className="font-semibold text-lg p-3 mr-3">Chọn ngày khảo sát:</label>
-        <input type="date" id="date-select" className="p-3 text-lg bg-slate-300 border-gray-700 rounded-lg" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} />
+      <div className="m-4">
+        <div className="mb-8 flex">
+          <label htmlFor="date-select" className="font-semibold text-lg p-3 mr-3">Chọn ngày khảo sát:</label>
+          <input type="date" id="date-select" className="p-3 text-lg bg-slate-300 border-gray-700 rounded-lg" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} />
+        </div>
+        <div className='flex flex-wrap justify-around items-start'>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={temperatureChart} options={options} />
+            </div>
+          </div>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={humidityChart} options={options} />
+            </div>
+          </div>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={mq7Chart} options={options} />
+            </div>
+          </div>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={dustDensityChart} options={options} />
+            </div>
+          </div>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={rainChart} options={options} />
+            </div>
+          </div>
+          <div className='w-full p-4'>
+            <div className='bg-white p-4 shadow rounded-lg'>
+              <Line data={lightChart} options={options} />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className='flex flex-wrap justify-around items-start'>
-        <div className='w-full p-4'>
-          <div className='bg-white p-4 shadow rounded-lg'>
-            <Line data={temperatureChart} options={options} />
-          </div>
-        </div>
-        <div className='w-full p-4'>
-          <div className='bg-white p-4 shadow rounded-lg'>
-            <Line data={humidityChart} options={options} />
-          </div>
-        </div>
-        <div className='w-full p-4'>
-          <div className='bg-white p-4 shadow rounded-lg'>
-            <Line data={mq7Chart} options={options} />
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

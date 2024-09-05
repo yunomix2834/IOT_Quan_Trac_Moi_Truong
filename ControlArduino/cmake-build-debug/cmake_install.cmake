@@ -1,4 +1,4 @@
-# Install script for directory: E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino
+# Install script for directory: E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Learn/IOT_Quan_Trac_Moi_Truong/controller/ControlArduino/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/Learn/IOT_Quan_Trac_Moi_Truong/ControlArduino/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
