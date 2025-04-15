@@ -1,1 +1,4 @@
-README
+- Task 2: Submit the screenshot of the first merge. (2 pts)
+  - 0 pts: The image is not submitted.
+  - 1 pt: The image submitted shows that the branch bug-fix-typo is merged onto main but the details are not fully correct.
+  - 2 pts: The image shows that the current branch is main and changes to README.md file in bug-fix-typo have been merged to main.
